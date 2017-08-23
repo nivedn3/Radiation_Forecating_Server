@@ -6,8 +6,9 @@ class ForspefArchiveScrapper(scrapy.Spider):
     name = "forspef"
 
     def start_requests(self):
-        #url = 'http://tromos.space.noa.gr/forspef/archive/results.php?date1=%272016-01-01%2000:00:00%27&date2=%272017-01-01%2023:59:59%27'
-        url = 'http://tromos.space.noa.gr/forspef/archive/results.php?date1=%272015-08-01%2000:00:00%27&date2=%272017-07-01%2023:59:59%27'
+        url = 'http://tromos.space.noa.gr/forspef/archive/' + \
+              'results.php?date1=%272015-08-01%2000:00:00%27&date2=' + \
+              '%272017-07-01%2023:59:59%27'
         yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):

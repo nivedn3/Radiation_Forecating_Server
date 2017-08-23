@@ -18,8 +18,9 @@ class PrediccsArchiveScrapper(scrapy.Spider):
 
         if response.status == 404:
             self.count = self.count + 1
-            scrap_url = 'http://prediccs.sr.unh.edu/data/goesPlots/archive/' + \
-                self.links[0][self.count] + self.string
+            scrap_url = 'http://prediccs.sr.unh.edu/' + \
+                        'data/goesPlots/archive/' + \
+                        self.links[0][self.count] + self.string
             yield scrapy.Request(scrap_url, self.parse)
 
         if not self.flag:
@@ -28,8 +29,9 @@ class PrediccsArchiveScrapper(scrapy.Spider):
             self.links.append(linkobj.css("a::attr(href)").extract())
             if self.count < len(self.links[0]):
                 self.count = self.count + 1
-                scrap_url = 'http://prediccs.sr.unh.edu/data/goesPlots/archive/' + \
-                    self.links[0][self.count] + self.string
+                scrap_url = 'http://prediccs.sr.unh.edu/' + \
+                            'data/goesPlots/archive/' + \
+                            self.links[0][self.count] + self.string
                 yield scrapy.Request(scrap_url, self.parse)
 
         datas = response.css("p::text").extract_first()
@@ -45,6 +47,7 @@ class PrediccsArchiveScrapper(scrapy.Spider):
         }
         if self.count < len(self.links[0]):
             self.count = self.count + 1
-            scrap_url = 'http://prediccs.sr.unh.edu/data/goesPlots/archive/' + \
-                self.links[0][self.count] + self.string
+            scrap_url = 'http://prediccs.sr.unh.edu/' + \
+                        'data/goesPlots/archive/' + \
+                        self.links[0][self.count] + self.string
             yield scrapy.Request(scrap_url, self.parse)

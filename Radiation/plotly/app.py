@@ -22,10 +22,11 @@ def index():
     alarm = info_data['data']['prediccs-alarm']
     clear_signal = info_data['data']['all-clear']
     SEP_threshold = info_data['thresholds']['SEP probability threshold']
-    suit_threshold = info_data['thresholds']['Thin spacesuit shielding threshold']
-    shelter_threshold = info_data['thresholds']['Storm shelter shielding threshold']
+    threshold = info_data['thresholds']
+    suit_threshold = threshold['Thin spacesuit shielding threshold']
+    shelter_threshold = threshold['Storm shelter shielding threshold']
 
-    if t_o_a == None:
+    if t_o_a is None:
         t_o_a = 'None'
 
     if alarm == 0:
@@ -33,13 +34,15 @@ def index():
     else:
         alarm = 'Warning !!!'
 
-    if clear_signal == None or clear_signal == 0:
+    if clear_signal is None or clear_signal == 0:
         clear_signal = 'None'
     else:
         clear_signal = 'all-clear'
 
-    table_data = {'data': {'time of arrival': t_o_a, 'alarm': alarm, 'clear': clear_signal,
-                           'SEP threshold': SEP_threshold, 'suit threshold': suit_threshold,
+    table_data = {'data': {'time of arrival': t_o_a,
+                           'alarm': alarm, 'clear': clear_signal,
+                           'SEP threshold': SEP_threshold,
+                           'suit threshold': suit_threshold,
                            'shelter threshold': shelter_threshold}}
 
     plot_data = requests.get("http://localhost:8000/plot")
@@ -96,7 +99,6 @@ def index():
                     line=dict(
                         width=1,
                         color='black',
-                        #dash  = 'dashdot',
                         opacity=0.5,
                     )
 
