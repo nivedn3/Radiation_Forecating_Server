@@ -59,3 +59,5 @@ all-clear	::
 
 	
 	
+
+`Link to the official marscity repository. <https://github.com/mars-planet/mars_city/tree/master/servers>`_

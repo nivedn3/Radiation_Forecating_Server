@@ -20,6 +20,7 @@ def index():
     t_o_a = info_data['data']['time of arrival']
     t_o_p = info_data['time']
     alarm = info_data['data']['prediccs-alarm']
+    print alarm
     clear_signal = info_data['data']['all-clear']
     SEP_threshold = info_data['thresholds']['SEP probability threshold']
     threshold = info_data['thresholds']
